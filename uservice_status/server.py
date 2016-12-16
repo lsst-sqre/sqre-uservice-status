@@ -9,7 +9,7 @@ from flask import jsonify
 def server():
     """Create the app and then run it."""
     app = apf(name="uservice-status",
-              version="0.0.1",
+              version="0.0.5",
               repository="https://github.com/sqre-lsst/sqre-uservice-status",
               description="API wrapper for status data")
 
@@ -36,7 +36,8 @@ def server():
         response.status_code = error.status_code
         return response
 
-    app.run()
+    app.run(host='0.0.0.0')
+
 
 if __name__ == "__main__":
     server()

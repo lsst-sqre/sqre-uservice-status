@@ -9,7 +9,7 @@ DESCRIPTION = 'Minimal SQuaRE API wrapper for status.lsst.codes'
 AUTHOR = 'Adam Thornton'
 AUTHOR_EMAIL = 'athornton@lsst.org'
 URL = 'https://github.com/lsst-sqre/sqre-uservice-status'
-VERSION = '0.0.4'
+VERSION = '0.0.5'
 LICENSE = 'MIT'
 
 
