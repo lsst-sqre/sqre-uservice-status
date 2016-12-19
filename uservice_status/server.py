@@ -14,6 +14,8 @@ def server(run_standalone=False):
               description="API wrapper for status data")
 
     @app.route("/")
+    @app.route("/status")
+    @app.route("/status/")
     @app.route("/status.json")
     # pylint: disable=unused-variable
     def get_status():

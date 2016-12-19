@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: uservice-status
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: uservice-status
+    spec:
+      containers:
+
+        - name: uservice-status
+          imagePullPolicy: "Always"
+          image: "lsstsqre/uservice-status"
+          ports:
+            -
+              containerPort: 5000
+              name: uservice-status
+              
