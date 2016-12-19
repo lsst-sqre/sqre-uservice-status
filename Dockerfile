@@ -1,6 +1,6 @@
 FROM       centos:7
 MAINTAINER sqre-admin
-LABEL      version="0.0.5" description="LSST DM/SQuaRE status microservice" \
+LABEL      version="0.0.6" description="LSST DM/SQuaRE status microservice" \
            name="lsstsqre/uservice-status"
 
 USER       root

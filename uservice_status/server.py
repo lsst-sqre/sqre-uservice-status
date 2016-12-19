@@ -6,7 +6,7 @@ from apikit import BackendError
 from flask import jsonify
 
 
-def server():
+def server(run_standalone=False):
     """Create the app and then run it."""
     app = apf(name="uservice-status",
               version="0.0.5",
@@ -36,8 +36,13 @@ def server():
         response.status_code = error.status_code
         return response
 
-    app.run(host='0.0.0.0')
+    if run_standalone:
+        app.run(host='0.0.0.0', threaded=True)
 
+
+def standalone():
+    """Entry point for running as its own executable."""
+    server(run_standalone=True)
 
 if __name__ == "__main__":
-    server()
+    standalone()
