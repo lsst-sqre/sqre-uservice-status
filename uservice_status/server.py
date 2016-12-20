@@ -8,10 +8,12 @@ from flask import jsonify
 
 def server(run_standalone=False):
     """Create the app and then run it."""
+    # Add "/status" for mapping behind api.lsst.codes
     app = apf(name="uservice-status",
-              version="0.0.5",
+              version="0.0.8",
               repository="https://github.com/sqre-lsst/sqre-uservice-status",
-              description="API wrapper for status data")
+              description="API wrapper for status data",
+              route=["/", "/status"])
 
     @app.route("/")
     @app.route("/status")
@@ -37,7 +39,6 @@ def server(run_standalone=False):
         response = jsonify(error.to_dict())
         response.status_code = error.status_code
         return response
-
     if run_standalone:
         app.run(host='0.0.0.0', threaded=True)
 

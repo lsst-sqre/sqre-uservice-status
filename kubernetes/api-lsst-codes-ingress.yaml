@@ -12,8 +12,8 @@ spec:
   - host: api.lsst.codes
     http:
       paths:
-      - path: /status/ # You need one path per service, and the service needs
-        backend:       #  to recognize the path (no rewriting is done).
+      - path: /status/* # You need one path per service, and the service needs
+        backend:        #  to recognize the path (no rewriting is done).
           serviceName: uservice-status
           servicePort: 5000
           

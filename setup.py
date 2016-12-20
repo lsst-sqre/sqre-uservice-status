@@ -9,7 +9,7 @@ DESCRIPTION = 'Minimal SQuaRE API wrapper for status.lsst.codes'
 AUTHOR = 'Adam Thornton'
 AUTHOR_EMAIL = 'athornton@lsst.org'
 URL = 'https://github.com/lsst-sqre/sqre-uservice-status'
-VERSION = '0.0.7'
+VERSION = '0.0.8'
 LICENSE = 'MIT'
 
 
@@ -41,7 +41,7 @@ setup(
     keywords='lsst',
     packages=find_packages(exclude=['docs', 'tests*']),
     install_requires=[
-        'sqre-apikit==0.0.4',
+        'sqre-apikit==0.0.10',
         'bitly-oauth2-proxy-session==0.1.3'
     ],
     tests_require=['pytest'],
