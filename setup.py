@@ -9,7 +9,7 @@ DESCRIPTION = 'Minimal SQuaRE API wrapper for status.lsst.codes'
 AUTHOR = 'Adam Thornton'
 AUTHOR_EMAIL = 'athornton@lsst.org'
 URL = 'https://github.com/lsst-sqre/sqre-uservice-status'
-VERSION = '0.0.8'
+VERSION = '0.0.9'
 LICENSE = 'MIT'
 
 
@@ -19,6 +19,7 @@ def local_read(filename):
         os.path.abspath(os.path.dirname(__file__)),
         filename)
     return codecs.open(full_filename, 'r', 'utf-8').read()
+
 
 LONG_DESC = local_read('README.md')
 
@@ -42,7 +43,8 @@ setup(
     packages=find_packages(exclude=['docs', 'tests*']),
     install_requires=[
         'sqre-apikit==0.0.10',
-        'bitly-oauth2-proxy-session==0.1.3'
+        'bitly-oauth2-proxy-session==0.1.3',
+        'uWSGI==2.0.14'
     ],
     tests_require=['pytest'],
     entry_points={
