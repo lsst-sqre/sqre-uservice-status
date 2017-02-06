@@ -44,7 +44,7 @@ setup(
     install_requires=[
         'sqre-apikit==0.0.10',
         'bitly-oauth2-proxy-session==0.1.3',
-        'uWSGI== 2.0.14'
+        'uWSGI==2.0.14'
     ],
     tests_require=['pytest'],
     entry_points={
