@@ -5,15 +5,19 @@ from apikit import APIFlask as APF
 from apikit import BackendError
 from flask import jsonify
 
+log = None
+
 
 def server(run_standalone=False):
     """Create the app and then run it."""
     # Add "/status" for mapping behind api.lsst.codes
     app = APF(name="uservice-status",
-              version="0.0.9",
+              version="0.1.0",
               repository="https://github.com/sqre-lsst/sqre-uservice-status",
               description="API wrapper for status data",
               route=["/", "/status"])
+    global log
+    log = app.config["LOGGER"]
 
     @app.route("/")
     def root_route():
@@ -28,7 +32,9 @@ def server(run_standalone=False):
         """Proxy for status.lsst.codes"""
         # So, yeah, proxying an unauthenticated service, just to add some
         #  metadata.
-        resp = requests.get("https://status.lsst.codes/status.json")
+        staturl = "https://status.lsst.codes/status.json"
+        log.info("Fetching status from %s" % staturl)
+        resp = requests.get(staturl)
         if resp.status_code == 200:
             return resp.text
         else:
@@ -40,7 +46,9 @@ def server(run_standalone=False):
     # pylint: disable=unused-variable
     def handle_invalid_usage(error):
         """Custom error handler."""
-        response = jsonify(error.to_dict())
+        errdict = error.to_dict()
+        log.error(errdict)
+        response = jsonify(errdict)
         response.status_code = error.status_code
         return response
     if run_standalone:

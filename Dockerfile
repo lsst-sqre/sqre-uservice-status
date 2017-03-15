@@ -13,7 +13,7 @@ RUN        pip install --upgrade pip
 RUN        useradd -d /home/uwsgi -m uwsgi
 RUN        mkdir /dist
 
-ARG        VERSION="0.0.9"
+ARG        VERSION="0.1.0"
 LABEL      version="$VERSION"
 COPY       dist/sqre-uservice-status-$VERSION.tar.gz /dist
 RUN        pip install /dist/sqre-uservice-status-$VERSION.tar.gz
